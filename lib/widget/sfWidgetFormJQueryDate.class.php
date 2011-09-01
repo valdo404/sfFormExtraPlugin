@@ -103,11 +103,15 @@ class sfWidgetFormJQueryDate extends sfWidgetForm
   {
     var daysInMonth = 32 - new Date(jQuery("#%s").val(), jQuery("#%s").val() - 1, 32).getDate();
 
+    //jQuery("#%s option").attr("disabled", "");
+    //jQuery("#%s option:gt(" + (%s) +")").attr("disabled", "disabled");
+    
     if (jQuery("#%s").val() > daysInMonth)
     {
       jQuery("#%s").val(daysInMonth);
     }
   }
+
 
   jQuery(document).ready(function() {
     jQuery("#%s").datepicker(jQuery.extend({}, {
@@ -115,7 +119,7 @@ class sfWidgetFormJQueryDate extends sfWidgetForm
       maxDate:    new Date(%s, 12 - 1, 31),
       beforeShow: wfd_%s_read_linked,
       onSelect:   wfd_%s_update_linked,
-      showOn:     "button"
+      showOn:     "button",
       %s
     }, jQuery.datepicker.regional["%s"], %s, {dateFormat: "yy-mm-dd"}));
     wfd_%s_check_linked_days();
